@@ -1,0 +1,39 @@
+@import '../../../styles.css';
+
+.content {
+    width: 100%;
+    display: flex;
+}
+
+.left-content {
+    margin-top: 2%;
+    float: left;
+    width: 30%;
+}
+
+p, button {
+    margin-left: 2%;
+}
+
+button {
+    margin-left: 5%;
+    margin-top: 4%;
+}
+
+.table {
+    width: 98%;
+}
+
+table {
+    width: 100%;
+}
+
+th, td {
+    width: 25%;
+}
+
+.right-content {
+    float: right;
+    width: 90%;
+
+}

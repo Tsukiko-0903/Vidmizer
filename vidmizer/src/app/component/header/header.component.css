@@ -1,0 +1,19 @@
+@import '../../../styles.css';
+
+.content {
+    background-color: rgb(26, 32, 107);
+    display: flex;
+    width: calc(100%-75px);
+    padding: 2%;
+}
+
+img {
+    height: 75px !important;
+    float: left;
+}
+
+h2 {
+    color: white;
+    margin: auto;
+    display: inline-flex;
+}

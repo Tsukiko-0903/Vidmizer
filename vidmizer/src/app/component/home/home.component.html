@@ -1,0 +1,66 @@
+<app-header></app-header>
+<div class="content">
+    <div class="left-content">
+        <p>
+            <label>Entrez votre prénom</label><br />
+            <input [(ngModel)]="newData.prenom" placeholder="Prenom" required>
+        </p>
+        <p>
+            <label>Entrez votre nom</label><br />
+            <input [(ngModel)]="newData.nom" placeholder="Nom" required>
+        </p>
+        <p>
+            <label>Entrez votre telephone</label><br />
+            <input [(ngModel)]="newData.telephone" type="tel" placeholder="Telephone" maxlength="10" required>
+        </p>
+        <p>
+            <label>Choississez votre region</label><br />
+            <select [(ngModel)]="newData.region" required>
+                <option *ngFor="let region of regions" [ngValue]="region">{{ region.nom }}</option>
+            </select>
+        </p>
+
+        <button mat-raised-button (click)="send(newData)">Envoyer</button>
+    </div>
+    <div class="right-content">
+        <mat-form-field appearance="standard">
+            <label>Filtrer</label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+        </mat-form-field>
+
+        <div class="mat-elevation-z8 table">
+            <table mat-table [dataSource]="dataSource" matSort>
+
+                <ng-container matColumnDef="prenom">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Prénom </th>
+                    <td *matCellDef="let data"> {{data.prenom}} </td>
+                </ng-container>
+                <ng-container matColumnDef="logo">
+                    <th mat-header-cell *matHeaderCellDef> logo </th>
+                    <td *matCellDef="let data"><img [src]="data.logo" alt="manga logo"></td>
+                </ng-container>
+                <ng-container matColumnDef="nom">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Nom </th>
+                    <td *matCellDef="let data"> {{data.nom}} </td>
+                </ng-container>
+                <ng-container matColumnDef="telephone">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Téléphone </th>
+                    <td *matCellDef="let data"> {{data.telephone}} </td>
+                </ng-container>
+                <ng-container matColumnDef="region">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Région </th>
+                    <td *matCellDef="let data"> {{data.region.nom}} </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                <tr class="mat-row" *matNoDataRow>
+                    <td colspan="4">No data matching the filter "{{input.value}}"</td>
+                </tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+        </div>
+    </div>
+</div>
